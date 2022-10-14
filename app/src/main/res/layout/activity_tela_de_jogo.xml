@@ -1,0 +1,603 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TelaDeJogo">
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/svTelaJogo"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_margin="10dp"
+            android:orientation="vertical">
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/header_bar_shape"
+                android:padding="10dp">
+
+                <Button
+                    android:id="@+id/btSair"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:backgroundTint="@color/red"
+                    android:text="Sair" />
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:background="@drawable/background_cavalos">
+
+                <ImageView
+                    android:id="@+id/ivCavalo1"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:src="@drawable/background_cavalos"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp" />
+
+                <TextView
+                    android:id="@+id/tvNome1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivCavalo1"
+                    android:maxWidth="100dp"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <RatingBar
+                    android:id="@+id/rbCavalo1"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivCavalo1"
+                    android:progress="50" />
+
+                <TextView
+                    android:id="@+id/tvCavalo1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="Descanso do cavalo: \n"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btCavalo1"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/botao_aposta_shape"
+                    android:text="Apostar"
+                    android:textColor="#78a12c" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_cavalos">
+
+                <ImageView
+                    android:id="@+id/ivCavalo2"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="10dp" />
+
+                <TextView
+                    android:id="@+id/tvNome2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivCavalo2"
+                    android:maxWidth="100dp"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <RatingBar
+                    android:id="@+id/rbCavalo2"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivCavalo2"
+                    android:progress="50" />
+
+                <TextView
+                    android:id="@+id/tvCavalo2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="Descanso do cavalo: \n"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btCavalo2"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/botao_aposta_shape"
+                    android:text="Apostar"
+                    android:textColor="#78a12c" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_cavalos">
+
+                <ImageView
+                    android:id="@+id/ivCavalo3"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="10dp" />
+
+                <TextView
+                    android:id="@+id/tvNome3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivCavalo3"
+                    android:maxWidth="100dp"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <RatingBar
+                    android:id="@+id/rbCavalo3"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivCavalo3"
+                    android:progress="50" />
+
+                <TextView
+                    android:id="@+id/tvCavalo3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="Descanso do cavalo: \n"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btCavalo3"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/botao_aposta_shape"
+                    android:text="Apostar"
+                    android:textColor="#78a12c" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_cavalos">
+
+                <ImageView
+                    android:id="@+id/ivCavalo4"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="10dp" />
+
+                <TextView
+                    android:id="@+id/tvNome4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivCavalo4"
+                    android:maxWidth="100dp"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <RatingBar
+                    android:id="@+id/rbCavalo4"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivCavalo4"
+                    android:progress="50" />
+
+                <TextView
+                    android:id="@+id/tvCavalo4"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="Descanso do cavalo: \n"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btCavalo4"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/botao_aposta_shape"
+                    android:text="Apostar"
+                    android:textColor="#78a12c" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_cavalos">
+
+                <ImageView
+                    android:id="@+id/ivCavalo5"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="10dp" />
+
+                <TextView
+                    android:id="@+id/tvNome5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivCavalo5"
+                    android:maxWidth="100dp"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <RatingBar
+                    android:id="@+id/rbCavalo5"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivCavalo5"
+                    android:progress="50" />
+
+                <TextView
+                    android:id="@+id/tvCavalo5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="Descanso do cavalo: \n"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btCavalo5"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/botao_aposta_shape"
+                    android:text="Apostar"
+                    android:textColor="#78a12c" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_cavalos">
+
+                <ImageView
+                    android:id="@+id/ivCavalo6"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="10dp" />
+
+                <TextView
+                    android:id="@+id/tvNome6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivCavalo6"
+                    android:maxWidth="100dp"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <RatingBar
+                    android:id="@+id/rbCavalo6"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivCavalo6"
+                    android:progress="50" />
+
+                <TextView
+                    android:id="@+id/tvCavalo6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="Descanso do cavalo: \n"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btCavalo6"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/botao_aposta_shape"
+                    android:text="Apostar"
+                    android:textColor="#78a12c" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_cavalos">
+
+                <ImageView
+                    android:id="@+id/ivCavalo7"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="10dp" />
+
+                <TextView
+                    android:id="@+id/tvNome7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivCavalo7"
+                    android:maxWidth="100dp"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <RatingBar
+                    android:id="@+id/rbCavalo7"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivCavalo7"
+                    android:progress="50" />
+
+                <TextView
+                    android:id="@+id/tvCavalo7"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="Descanso do cavalo: \n"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btCavalo7"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/botao_aposta_shape"
+                    android:text="Apostar"
+                    android:textColor="#78a12c" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_cavalos">
+
+                <ImageView
+                    android:id="@+id/ivCavalo8"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="10dp" />
+
+                <TextView
+                    android:id="@+id/tvNome8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivCavalo8"
+                    android:maxWidth="100dp"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <RatingBar
+                    android:id="@+id/rbCavalo8"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivCavalo8"
+                    android:progress="50" />
+
+                <TextView
+                    android:id="@+id/tvCavalo8"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="Descanso do cavalo: \n"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btCavalo8"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/botao_aposta_shape"
+                    android:text="Apostar"
+                    android:textColor="#78a12c" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_cavalos">
+
+                <ImageView
+                    android:id="@+id/ivCavalo9"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="10dp" />
+
+                <TextView
+                    android:id="@+id/tvNome9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivCavalo9"
+                    android:maxWidth="100dp"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <RatingBar
+                    android:id="@+id/rbCavalo9"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivCavalo9"
+                    android:progress="50" />
+
+                <TextView
+                    android:id="@+id/tvCavalo9"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="Descanso do cavalo: \n"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btCavalo9"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/botao_aposta_shape"
+                    android:text="Apostar"
+                    android:textColor="#78a12c" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/background_cavalos">
+
+                <ImageView
+                    android:id="@+id/ivCavalo10"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
+                    android:layout_margin="10dp" />
+
+                <TextView
+                    android:id="@+id/tvNome10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_toRightOf="@id/ivCavalo10"
+                    android:maxWidth="100dp"
+                    android:textColor="@color/black"
+                    android:textSize="30sp" />
+
+                <RatingBar
+                    android:id="@+id/rbCavalo10"
+                    style="@style/Widget.AppCompat.RatingBar.Indicator"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@id/ivCavalo10"
+                    android:progress="50" />
+
+                <TextView
+                    android:id="@+id/tvCavalo10"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentBottom="true"
+                    android:text="Descanso do cavalo: \n"
+                    android:textAlignment="textEnd"
+                    android:textColor="@color/black"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+
+                <androidx.appcompat.widget.AppCompatButton
+                    android:id="@+id/btCavalo10"
+                    android:layout_width="110dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:background="@drawable/botao_aposta_shape"
+                    android:text="Apostar"
+                    android:textColor="#78a12c" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+</LinearLayout>
