@@ -5,8 +5,11 @@
       <map>
         <entry key="..\:/Users/troll/AndroidStudioProjects/Apostadecavalos/app/src/main/res/drawable/botao_aposta_shape.xml" value="0.136" />
         <entry key="..\:/Users/troll/AndroidStudioProjects/Apostadecavalos/app/src/main/res/drawable/header_bar_shape.xml" value="0.136" />
+        <entry key="..\:/Users/troll/AndroidStudioProjects/Apostadecavalos/app/src/main/res/drawable/ic_baseline_help_24.xml" value="0.1" />
         <entry key="..\:/Users/troll/AndroidStudioProjects/Apostadecavalos/app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="..\:/Users/troll/AndroidStudioProjects/Apostadecavalos/app/src/main/res/layout/activity_popup.xml" value="0.2" />
         <entry key="..\:/Users/troll/AndroidStudioProjects/Apostadecavalos/app/src/main/res/layout/activity_tela_de_jogo.xml" value="0.22" />
+        <entry key="..\:/Users/troll/AndroidStudioProjects/Apostadecavalos/app/src/main/res/menu/menu_jogo.xml" value="0.19895833333333332" />
       </map>
     </option>
   </component>

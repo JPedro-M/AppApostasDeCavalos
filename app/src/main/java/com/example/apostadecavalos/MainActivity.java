@@ -15,6 +15,10 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        if (getSupportActionBar() != null) {
+            getSupportActionBar().hide();
+        }
+
         btNovoJogo = findViewById(R.id.btNovoJogo);
 
         btNovoJogo.setOnClickListener(new View.OnClickListener() {
@@ -25,4 +29,5 @@ public class MainActivity extends AppCompatActivity {
             }
         });
     }
+
 }

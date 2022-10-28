@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".TelaDeJogo">
@@ -20,22 +21,6 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
-                android:background="@drawable/header_bar_shape"
-                android:padding="10dp">
-
-                <Button
-                    android:id="@+id/btSair"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_alignParentEnd="true"
-                    android:backgroundTint="@color/red"
-                    android:text="Sair" />
-            </RelativeLayout>
-
-            <RelativeLayout
-                android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:background="@drawable/background_cavalos">
 
@@ -45,9 +30,9 @@
                     android:layout_height="75dp"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
-                    android:src="@drawable/background_cavalos"
                     android:layout_marginEnd="10dp"
-                    android:layout_marginBottom="10dp" />
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/cabeca_cavalo" />
 
                 <TextView
                     android:id="@+id/tvNome1"
@@ -103,7 +88,11 @@
                     android:id="@+id/ivCavalo2"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_margin="10dp" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/cabeca_cavalo" />
 
                 <TextView
                     android:id="@+id/tvNome2"
@@ -159,7 +148,11 @@
                     android:id="@+id/ivCavalo3"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_margin="10dp" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/cabeca_cavalo" />
 
                 <TextView
                     android:id="@+id/tvNome3"
@@ -215,7 +208,11 @@
                     android:id="@+id/ivCavalo4"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_margin="10dp" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/cabeca_cavalo" />
 
                 <TextView
                     android:id="@+id/tvNome4"
@@ -271,7 +268,11 @@
                     android:id="@+id/ivCavalo5"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_margin="10dp" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/cabeca_cavalo" />
 
                 <TextView
                     android:id="@+id/tvNome5"
@@ -327,7 +328,11 @@
                     android:id="@+id/ivCavalo6"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_margin="10dp" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/cabeca_cavalo" />
 
                 <TextView
                     android:id="@+id/tvNome6"
@@ -383,7 +388,11 @@
                     android:id="@+id/ivCavalo7"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_margin="10dp" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/cabeca_cavalo" />
 
                 <TextView
                     android:id="@+id/tvNome7"
@@ -439,7 +448,11 @@
                     android:id="@+id/ivCavalo8"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_margin="10dp" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/cabeca_cavalo" />
 
                 <TextView
                     android:id="@+id/tvNome8"
@@ -495,7 +508,11 @@
                     android:id="@+id/ivCavalo9"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_margin="10dp" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/cabeca_cavalo" />
 
                 <TextView
                     android:id="@+id/tvNome9"
@@ -551,7 +568,11 @@
                     android:id="@+id/ivCavalo10"
                     android:layout_width="75dp"
                     android:layout_height="75dp"
-                    android:layout_margin="10dp" />
+                    android:layout_marginStart="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginEnd="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:src="@drawable/cabeca_cavalo" />
 
                 <TextView
                     android:id="@+id/tvNome10"
