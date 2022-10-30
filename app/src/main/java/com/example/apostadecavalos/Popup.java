@@ -3,8 +3,13 @@ package com.example.apostadecavalos;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
 
-public class popup extends AppCompatActivity {
+import com.google.android.material.slider.Slider;
+
+public class Popup extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

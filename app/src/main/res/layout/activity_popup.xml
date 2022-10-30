@@ -1,13 +1,96 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="200dp"
+    android:layout_height="match_parent"
+    android:layout_gravity="center"
     android:orientation="vertical"
-    tools:context=".popup">
+    tools:context=".Popup">
+
+    <TextView
+        android:id="@+id/txtDinheiroAtual"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Dinheiro atual: "
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <TextView
+        android:id="@+id/txtLabel1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtDinheiroAtual"
+        android:layout_marginHorizontal="10dp"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:text="Dinheiro para apostar:"
+        android:textColor="@color/black"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/etAposta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/txtLabel1"
+        android:inputType="numberDecimal"
+        android:layout_marginHorizontal="10dp"
+        android:background="@drawable/visor_shape"
+        android:gravity="center"
+        android:padding="10dp"
+        android:text="0.0" />
+
+    <com.google.android.material.slider.Slider
+        android:id="@+id/sliderAposta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etAposta"
+        android:layout_marginHorizontal="30dp"
+        android:value="0"
+        android:valueFrom="0"
+        android:valueTo="1" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btApostar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/sliderAposta"
+        android:layout_marginHorizontal="15dp"
+        android:background="@drawable/botao_aposta_shape"
+        android:text="Apostar"
+        android:textColor="#78a12c" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/btCancelar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/btApostar"
+        android:layout_marginHorizontal="20dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/botao_aposta_shape"
+        android:text="Cancelar"
+        android:textColor="#78a12c" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etAposta"
+        android:padding="10dp"
+        android:text="min"
+        android:textSize="15sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/etAposta"
+        android:layout_alignParentEnd="true"
+        android:padding="10dp"
+        android:text="max"
+        android:textSize="15sp" />
 
 
-
-
-</LinearLayout>
+</RelativeLayout>

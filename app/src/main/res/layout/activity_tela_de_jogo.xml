@@ -3,7 +3,6 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".TelaDeJogo">
@@ -22,6 +21,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
+                android:id="@+id/rlCavalo1"
                 android:background="@drawable/background_cavalos">
 
                 <ImageView
@@ -57,6 +57,11 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/background"
                     android:text="Descanso do cavalo: \n"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"
@@ -81,6 +86,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
+                android:id="@+id/rlCavalo2"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/background_cavalos">
 
@@ -117,6 +123,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/background"
                     android:text="Descanso do cavalo: \n"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"
@@ -142,6 +154,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_marginTop="10dp"
+                android:id="@+id/rlCavalo3"
                 android:background="@drawable/background_cavalos">
 
                 <ImageView
@@ -177,6 +190,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/background"
                     android:text="Descanso do cavalo: \n"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"
@@ -202,6 +221,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_marginTop="10dp"
+                android:id="@+id/rlCavalo4"
                 android:background="@drawable/background_cavalos">
 
                 <ImageView
@@ -237,6 +257,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/background"
                     android:text="Descanso do cavalo: \n"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"
@@ -260,6 +286,7 @@
 
             <RelativeLayout
                 android:layout_width="match_parent"
+                android:id="@+id/rlCavalo5"
                 android:layout_height="130dp"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/background_cavalos">
@@ -297,6 +324,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/background"
                     android:text="Descanso do cavalo: \n"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"
@@ -322,6 +355,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_marginTop="10dp"
+                android:id="@+id/rlCavalo6"
                 android:background="@drawable/background_cavalos">
 
                 <ImageView
@@ -357,6 +391,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/background"
                     android:text="Descanso do cavalo: \n"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"
@@ -381,6 +421,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
+                android:id="@+id/rlCavalo7"
                 android:layout_marginTop="10dp"
                 android:background="@drawable/background_cavalos">
 
@@ -417,6 +458,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/background"
                     android:text="Descanso do cavalo: \n"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"
@@ -442,6 +489,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_marginTop="10dp"
+                android:id="@+id/rlCavalo8"
                 android:background="@drawable/background_cavalos">
 
                 <ImageView
@@ -477,6 +525,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/background"
                     android:text="Descanso do cavalo: \n"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"
@@ -502,6 +556,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_marginTop="10dp"
+                android:id="@+id/rlCavalo9"
                 android:background="@drawable/background_cavalos">
 
                 <ImageView
@@ -537,6 +592,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/background"
                     android:text="Descanso do cavalo: \n"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"
@@ -562,6 +623,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="130dp"
                 android:layout_marginTop="10dp"
+                android:id="@+id/rlCavalo10"
                 android:background="@drawable/background_cavalos">
 
                 <ImageView
@@ -597,6 +659,12 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_alignParentBottom="true"
+                    android:layout_margin="5dp"
+                    android:layout_marginStart="5dp"
+                    android:layout_marginTop="5dp"
+                    android:layout_marginEnd="5dp"
+                    android:layout_marginBottom="5dp"
+                    android:background="@color/background"
                     android:text="Descanso do cavalo: \n"
                     android:textAlignment="textEnd"
                     android:textColor="@color/black"

@@ -10,16 +10,26 @@ import android.graphics.Color;
 import android.graphics.PorterDuff;
 import android.graphics.drawable.LayerDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.Switch;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.google.android.material.slider.Slider;
+
+import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Random;
@@ -27,19 +37,26 @@ import java.util.Set;
 
 public class TelaDeJogo extends AppCompatActivity {
     private ImageView iv1, iv2, iv3, iv4, iv5, iv6, iv7, iv8, iv9, iv10;
-    private TextView tvN1, tvN2, tvN3, tvN4, tvN5, tvN6, tvN7, tvN8, tvN9, tvN10, tvC1, tvC2, tvC3, tvC4, tvC5, tvC6, tvC7, tvC8, tvC9, tvC10;
+    private TextView txtDinheiroAtual, tvN1, tvN2, tvN3, tvN4, tvN5, tvN6, tvN7, tvN8, tvN9, tvN10, tvC1, tvC2, tvC3, tvC4, tvC5, tvC6, tvC7, tvC8, tvC9, tvC10;
     private RatingBar rb1, rb2, rb3, rb4, rb5, rb6, rb7, rb8, rb9, rb10;
-    private Button bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt10;
+    private Button btAposta, btCancelar, bt1, bt2, bt3, bt4, bt5, bt6, bt7, bt8, bt9, bt10;
     private AlertDialog.Builder dialogBuilder;
     private AlertDialog dialog;
+    private EditText etAposta;
+    private Slider slAposta;
+    private RelativeLayout rvCavalo1, rvCavalo2, rvCavalo3, rvCavalo4, rvCavalo5, rvCavalo6, rvCavalo7, rvCavalo8, rvCavalo9, rvCavalo10;
 
 
     ArrayList<Cavalos> cavalo;
+    DecimalFormat df = new DecimalFormat("0.00");
     Random r = new Random();
+    DBHelper db;
     int cavaloSelc = 0;
     int[] ordem;
-
+    int cavalos, cavaloGanhador;
     int cod = 0;
+    double dinheiroAtual;
+    double dinheiroGanho = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,11 +64,14 @@ public class TelaDeJogo extends AppCompatActivity {
         setContentView(R.layout.activity_tela_de_jogo);
         iniciarComponentes();
         cavalo = new ArrayList<Cavalos>();
-
+        db = new DBHelper(this);
+        System.out.println(db.getUpgrade1());
         if (cavalo.isEmpty()) {
             criarCavalos();
         }
-        startGame();
+        checarUpgrade1();
+        comecarNovoJogo();
+        botaoAposta();
 
 
     }
@@ -76,7 +96,7 @@ public class TelaDeJogo extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    public void onStart(){
+    public void onStart() {
         super.onStart();
         criarCavalos();
     }
@@ -132,7 +152,16 @@ public class TelaDeJogo extends AppCompatActivity {
         bt8 = findViewById(R.id.btCavalo8);
         bt9 = findViewById(R.id.btCavalo9);
         bt10 = findViewById(R.id.btCavalo10);
-
+        rvCavalo1 = findViewById(R.id.rlCavalo1);
+        rvCavalo2 = findViewById(R.id.rlCavalo2);
+        rvCavalo3 = findViewById(R.id.rlCavalo3);
+        rvCavalo4 = findViewById(R.id.rlCavalo4);
+        rvCavalo5 = findViewById(R.id.rlCavalo5);
+        rvCavalo6 = findViewById(R.id.rlCavalo6);
+        rvCavalo7 = findViewById(R.id.rlCavalo7);
+        rvCavalo8 = findViewById(R.id.rlCavalo8);
+        rvCavalo9 = findViewById(R.id.rlCavalo9);
+        rvCavalo10 = findViewById(R.id.rlCavalo10);
     }
 
     public ArrayList<Cavalos> getCavalo() {
@@ -167,20 +196,17 @@ public class TelaDeJogo extends AppCompatActivity {
     }
 
     public int[] sortOrd() {
-        int[] num = new int[10];
+        int[] num = new int[cavalos];
         int find, c;
 
-        for(int i = 0; i < num.length; i++)
-        {
+        for (int i = 0; i < num.length; i++) {
             find = r.nextInt(19) + 1;
-            if ( i == 0 ) {
+            if (i == 0) {
                 num[i] = find;
             } else {
                 c = 0;
-                while (c < i)
-                {
-                    if (num[c] == find)
-                    {
+                while (c < i) {
+                    if (num[c] == find) {
                         find = r.nextInt(19) + 1;
                         c = 0;
                     } else {
@@ -232,14 +258,23 @@ public class TelaDeJogo extends AppCompatActivity {
         return n;
     }
 
-    public void startGame() {
+    public void comecarNovoJogo() {
 
+        ordem = sortOrd();
+        dinheiroAtual = 500;
+        for (int i = 0; i < ordem.length; i++) {
+            setQualCav(ordem[i], getQual());
+            setCavalos(i + 1, ordem[i]);
+
+        }
+    }
+
+    public void comecarJogo(){
         ordem = sortOrd();
 
         for (int i = 0; i < ordem.length; i++) {
             setQualCav(ordem[i], getQual());
             setCavalos(i + 1, ordem[i]);
-
         }
     }
 
@@ -303,76 +338,340 @@ public class TelaDeJogo extends AppCompatActivity {
         }
     }
 
-    public void setQualCav(int id, int quali){
+    public void setQualCav(int id, int quali) {
         cavalo.get(id).setQualidade(quali);
     }
 
-    public void criarDialog(){
+    public void criarDialog() {
         dialogBuilder = new AlertDialog.Builder(this);
         final View contactPopup = getLayoutInflater().inflate(R.layout.activity_popup, null);
+        final View popupGanhou = getLayoutInflater().inflate(R.layout.activity_ganhou, null);
+        final View popupPerdeu = getLayoutInflater().inflate(R.layout.activity_perdeu, null);
+
+        dialogBuilder.setView(contactPopup);
+        dialog = dialogBuilder.create();
+        dialog.show();
+
+        txtDinheiroAtual = contactPopup.findViewById(R.id.txtDinheiroAtual);
+        etAposta = contactPopup.findViewById(R.id.etAposta);
+        slAposta = contactPopup.findViewById(R.id.sliderAposta);
+        btAposta = contactPopup.findViewById(R.id.btApostar);
+        btCancelar = contactPopup.findViewById(R.id.btCancelar);
+
+        etAposta.addTextChangedListener(tw);
+
+        txtDinheiroAtual.setText("Dinheiro atual: " + dinheiroAtual);
+        slAposta.addOnChangeListener(new Slider.OnChangeListener() {
+            @Override
+            public void onValueChange(@NonNull Slider slider, float value, boolean fromUser) {
+                double x = dinheiroAtual * slAposta.getValue();
+                etAposta.setText(df.format(x));
+            }
+        });
+
+        btAposta.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if (Double.parseDouble(etAposta.getText().toString().replace(",",".")) != 0){
+                    double aposta = Double.parseDouble(etAposta.getText().toString().replace(",","."));
+                    gerarVencedor();
+                    if (cavaloSelc == cavaloGanhador){
+                        dialog.dismiss();
+                        dialogBuilder.setView(popupGanhou);
+                        dialog = dialogBuilder.create();
+                        dialog.show();
+                        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialog.dismiss();
+                            }
+                        },3000);
+                        dinheiroAtual = Double.parseDouble(df.format(dinheiroAtual + aposta).replace(",","."));
+
+                        dinheiroGanho += aposta;
+                    }else{
+                        dialog.dismiss();
+                        dialogBuilder.setView(popupPerdeu);
+                        dialog = dialogBuilder.create();
+                        dialog.show();
+                        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+                            @Override
+                            public void run() {
+                                dialog.dismiss();
+                            }
+                        },3000);
+                        dinheiroAtual = Double.parseDouble(df.format(dinheiroAtual - aposta).replace(",","."));
+                    }
+                    if (dinheiroAtual <= 0){
+                        encerrarJogo();
+                    }else{
+                        comecarJogo();
+                    }
+                }else{
+                    Toast.makeText(TelaDeJogo.this, "Aposte algo, por favor", Toast.LENGTH_LONG).show();
+                }
+            }
+        });
+        btCancelar.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
     }
 
-    public void botaoAposta(){
+    public void botaoAposta() {
         bt1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cavaloSelc = ordem[0];
-
+                cavaloSelc = 1;
+                criarDialog();
             }
         });
         bt2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cavaloSelc = ordem[1];
+                cavaloSelc = 2;
+                criarDialog();
             }
         });
         bt3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cavaloSelc = ordem[2];
+                cavaloSelc = 3;
+                criarDialog();
             }
         });
         bt4.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cavaloSelc = ordem[3];
+                cavaloSelc =4;
+                criarDialog();
             }
         });
         bt5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cavaloSelc = ordem[4];
+                cavaloSelc = 5;
+                criarDialog();
             }
         });
         bt6.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cavaloSelc = ordem[5];
+                cavaloSelc = 6;
+                criarDialog();
             }
         });
         bt7.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cavaloSelc = ordem[6];
+                cavaloSelc = 7;
+                criarDialog();
             }
         });
         bt8.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cavaloSelc = ordem[7];
+                cavaloSelc = 8;
+                criarDialog();
             }
         });
         bt9.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cavaloSelc = ordem[8];
+                cavaloSelc = 9;
+                criarDialog();
             }
         });
         bt10.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                cavaloSelc = ordem[9];
+                cavaloSelc = 10;
+                criarDialog();
             }
         });
+    }
+
+    public void checarUpgrade1() {
+        cavalos = 10 - db.getUpgrade1();
+
+        switch (cavalos) {
+            case 5:
+                rvCavalo6.setVisibility(View.GONE);
+                rvCavalo7.setVisibility(View.GONE);
+                rvCavalo8.setVisibility(View.GONE);
+                rvCavalo9.setVisibility(View.GONE);
+                rvCavalo10.setVisibility(View.GONE);
+                break;
+            case 6:
+                rvCavalo7.setVisibility(View.GONE);
+                rvCavalo8.setVisibility(View.GONE);
+                rvCavalo9.setVisibility(View.GONE);
+                rvCavalo10.setVisibility(View.GONE);
+                break;
+            case 7:
+                rvCavalo8.setVisibility(View.GONE);
+                rvCavalo9.setVisibility(View.GONE);
+                rvCavalo10.setVisibility(View.GONE);
+                break;
+            case 8:
+                rvCavalo9.setVisibility(View.GONE);
+                rvCavalo10.setVisibility(View.GONE);
+                break;
+            case 9:
+                rvCavalo10.setVisibility(View.GONE);
+                break;
+        }
+    }
+
+    public void gerarVencedor() {
+        int ganhador, total, cavalo1, cavalo2, cavalo3, cavalo4, cavalo5, cavalo6, cavalo7, cavalo8, cavalo9, cavalo10;
+
+        switch (cavalos) {
+            case 5:
+                cavalo1 = cavalo.get(ordem[0]).getDescanso() * cavalo.get(ordem[0]).getQualidade();
+                cavalo2 = cavalo.get(ordem[1]).getDescanso() * cavalo.get(ordem[1]).getQualidade();
+                cavalo3 = cavalo.get(ordem[2]).getDescanso() * cavalo.get(ordem[2]).getQualidade();
+                cavalo4 = cavalo.get(ordem[3]).getDescanso() * cavalo.get(ordem[3]).getQualidade();
+                cavalo5 = cavalo.get(ordem[4]).getDescanso() * cavalo.get(ordem[4]).getQualidade();
+                total = cavalo1 + cavalo2 + cavalo3 + cavalo4 + cavalo5;
+                break;
+            case 6:
+                cavalo1 = cavalo.get(ordem[0]).getDescanso() * cavalo.get(ordem[0]).getQualidade();
+                cavalo2 = cavalo.get(ordem[1]).getDescanso() * cavalo.get(ordem[1]).getQualidade();
+                cavalo3 = cavalo.get(ordem[2]).getDescanso() * cavalo.get(ordem[2]).getQualidade();
+                cavalo4 = cavalo.get(ordem[3]).getDescanso() * cavalo.get(ordem[3]).getQualidade();
+                cavalo5 = cavalo.get(ordem[4]).getDescanso() * cavalo.get(ordem[4]).getQualidade();
+                cavalo6 = cavalo.get(ordem[5]).getDescanso() * cavalo.get(ordem[5]).getQualidade();
+                total = cavalo1 + cavalo2 + cavalo3 + cavalo4 + cavalo5 + cavalo6;
+                break;
+            case 7:
+                cavalo1 = cavalo.get(ordem[0]).getDescanso() * cavalo.get(ordem[0]).getQualidade();
+                cavalo2 = cavalo.get(ordem[1]).getDescanso() * cavalo.get(ordem[1]).getQualidade();
+                cavalo3 = cavalo.get(ordem[2]).getDescanso() * cavalo.get(ordem[2]).getQualidade();
+                cavalo4 = cavalo.get(ordem[3]).getDescanso() * cavalo.get(ordem[3]).getQualidade();
+                cavalo5 = cavalo.get(ordem[4]).getDescanso() * cavalo.get(ordem[4]).getQualidade();
+                cavalo6 = cavalo.get(ordem[5]).getDescanso() * cavalo.get(ordem[5]).getQualidade();
+                cavalo7 = cavalo.get(ordem[6]).getDescanso() * cavalo.get(ordem[6]).getQualidade();
+                total = cavalo1 + cavalo2 + cavalo3 + cavalo4 + cavalo5 + cavalo6 + cavalo7;
+                break;
+            case 8:
+                cavalo1 = cavalo.get(ordem[0]).getDescanso() * cavalo.get(ordem[0]).getQualidade();
+                cavalo2 = cavalo.get(ordem[1]).getDescanso() * cavalo.get(ordem[1]).getQualidade();
+                cavalo3 = cavalo.get(ordem[2]).getDescanso() * cavalo.get(ordem[2]).getQualidade();
+                cavalo4 = cavalo.get(ordem[3]).getDescanso() * cavalo.get(ordem[3]).getQualidade();
+                cavalo5 = cavalo.get(ordem[4]).getDescanso() * cavalo.get(ordem[4]).getQualidade();
+                cavalo6 = cavalo.get(ordem[5]).getDescanso() * cavalo.get(ordem[5]).getQualidade();
+                cavalo7 = cavalo.get(ordem[6]).getDescanso() * cavalo.get(ordem[6]).getQualidade();
+                cavalo8 = cavalo.get(ordem[7]).getDescanso() * cavalo.get(ordem[7]).getQualidade();
+                total = cavalo1 + cavalo2 + cavalo3 + cavalo4 + cavalo5 + cavalo6 + cavalo7 + cavalo8;
+                break;
+            case 9:
+                cavalo1 = cavalo.get(ordem[0]).getDescanso() * cavalo.get(ordem[0]).getQualidade();
+                cavalo2 = cavalo.get(ordem[1]).getDescanso() * cavalo.get(ordem[1]).getQualidade();
+                cavalo3 = cavalo.get(ordem[2]).getDescanso() * cavalo.get(ordem[2]).getQualidade();
+                cavalo4 = cavalo.get(ordem[3]).getDescanso() * cavalo.get(ordem[3]).getQualidade();
+                cavalo5 = cavalo.get(ordem[4]).getDescanso() * cavalo.get(ordem[4]).getQualidade();
+                cavalo6 = cavalo.get(ordem[5]).getDescanso() * cavalo.get(ordem[5]).getQualidade();
+                cavalo7 = cavalo.get(ordem[6]).getDescanso() * cavalo.get(ordem[6]).getQualidade();
+                cavalo8 = cavalo.get(ordem[7]).getDescanso() * cavalo.get(ordem[7]).getQualidade();
+                cavalo9 = cavalo.get(ordem[8]).getDescanso() * cavalo.get(ordem[8]).getQualidade();
+                total = cavalo1 + cavalo2 + cavalo3 + cavalo4 + cavalo5 + cavalo6 + cavalo7 + cavalo8 + cavalo9;
+                break;
+            default:
+                cavalo1 = cavalo.get(ordem[0]).getDescanso() * cavalo.get(ordem[0]).getQualidade();
+                cavalo2 = cavalo.get(ordem[1]).getDescanso() * cavalo.get(ordem[1]).getQualidade();
+                cavalo3 = cavalo.get(ordem[2]).getDescanso() * cavalo.get(ordem[2]).getQualidade();
+                cavalo4 = cavalo.get(ordem[3]).getDescanso() * cavalo.get(ordem[3]).getQualidade();
+                cavalo5 = cavalo.get(ordem[4]).getDescanso() * cavalo.get(ordem[4]).getQualidade();
+                cavalo6 = cavalo.get(ordem[5]).getDescanso() * cavalo.get(ordem[5]).getQualidade();
+                cavalo7 = cavalo.get(ordem[6]).getDescanso() * cavalo.get(ordem[6]).getQualidade();
+                cavalo8 = cavalo.get(ordem[7]).getDescanso() * cavalo.get(ordem[7]).getQualidade();
+                cavalo9 = cavalo.get(ordem[8]).getDescanso() * cavalo.get(ordem[8]).getQualidade();
+                cavalo10 = cavalo.get(ordem[9]).getDescanso() * cavalo.get(ordem[9]).getQualidade();
+                total = cavalo1 + cavalo2 + cavalo3 + cavalo4 + cavalo5 + cavalo6 + cavalo7 + cavalo8 + cavalo9 + cavalo10;
+                break;
+        }
+
+        cavalo6 = 0;
+        cavalo7 = 0;
+        cavalo8 = 0;
+        cavalo9 = 0;
+        cavalo2 += cavalo1;
+        cavalo3 += cavalo2;
+        cavalo4 += cavalo3;
+        cavalo5 += cavalo4;
+        cavalo6 += cavalo5;
+        cavalo7 += cavalo6;
+        cavalo8 += cavalo7;
+        cavalo9 += cavalo8;
+
+        ganhador = r.nextInt(total - 1) + 1;
+
+        if (ganhador <= cavalo1) {
+            cavaloGanhador = 1;
+        } else if (ganhador <= cavalo2) {
+            cavaloGanhador = 2;
+        } else if (ganhador <= cavalo3) {
+            cavaloGanhador = 3;
+        } else if (ganhador <= cavalo4) {
+            cavaloGanhador = 4;
+        } else if (ganhador <= cavalo5) {
+            cavaloGanhador = 5;
+        } else if (ganhador <= cavalo6) {
+            cavaloGanhador = 6;
+        } else if (ganhador <= cavalo7) {
+            cavaloGanhador = 7;
+        } else if (ganhador <= cavalo8) {
+            cavaloGanhador = 8;
+        } else if (ganhador <= cavalo9) {
+            cavaloGanhador = 9;
+        } else {
+            cavaloGanhador = 10;
+        }
+
+    }
+
+    TextWatcher tw = new TextWatcher() {
+        @Override
+        public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+        }
+
+        @Override
+        public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+            if (!etAposta.getText().toString().equals("")){
+                if (Double.parseDouble(etAposta.getText().toString().replace(",", ".")) > dinheiroAtual) {
+                    etAposta.setText("" + dinheiroAtual);
+                }
+            }
+
+        }
+
+        @Override
+        public void afterTextChanged(Editable editable) {
+
+        }
+    };
+
+    public void encerrarJogo(){
+        dialogBuilder = new AlertDialog.Builder(this);
+        final View popupFaliu = getLayoutInflater().inflate(R.layout.activity_faliu, null);
+        DecimalFormat dfP = new DecimalFormat("0");
+        dialog.dismiss();
+        dialogBuilder.setView(popupFaliu);
+        dialog = dialogBuilder.create();
+        dialog.show();
+        new Handler(Looper.getMainLooper()).postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                dialog.dismiss();
+                Intent i = new Intent(TelaDeJogo.this, MainActivity.class);
+                startActivity(i);
+            }
+        },3000);
+        int pontos = Integer.parseInt(dfP.format(dinheiroGanho/10));
+        db.setPontos(db.getPontos() + pontos);
     }
 }

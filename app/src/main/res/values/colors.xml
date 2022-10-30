@@ -10,4 +10,5 @@
     <color name="gray">#818181</color>
     <color name="gold">#B7950B</color>
     <color name="red">#FF0000</color>
+    <color name="background">#8DFFFFFF</color>
 </resources>
